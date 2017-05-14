@@ -1,28 +1,32 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
+  <div v-show="view == 'tabela'">
+    <order-list></order-list>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+import OrderList from './components/OrderList'
+import store from './vuex/store';
 
 export default {
   name: 'app',
   components: {
-    Hello
+    "order-list": OrderList,
+  },
+  computed:{
+      view(){
+          return store.state.view;
+      }
+  },
+  methods: {
+      showView(view){
+          this.view = view;
+      }
   }
-}
+};
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="sass">
+  /* write sass here */
+  @import './styles/main.scss'
 </style>

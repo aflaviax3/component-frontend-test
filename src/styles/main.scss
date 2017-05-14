@@ -1,0 +1,30 @@
+$blue-dark: #1c448c;
+$blue-bright:#24c6dc;
+$purple: #9013fe;
+
+body.t-home {
+  background: $blue-bright;
+}
+
+.order-table {
+  color: $blue-dark;
+
+  thead {
+    tr {
+      display: block;
+    }
+  }
+
+  tbody {
+    tr {
+      border-radius: 25px;
+      background: white;
+      display: block;
+      margin-bottom: 10px;
+
+      td {
+        border-top: 0;
+      }
+    }
+  }
+}
