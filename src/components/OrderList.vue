@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="container">
     <div class="header">
-      <span><span>{{totalOrders}}</span> pedidos encontrados</span>
-      <span>no valor total de <span>{{formatPrice(total)}}</span></span>
+      <span class="header-info"><span class="header-info__totals">{{totalOrders}}</span> pedidos encontrados</span>
+      <span class="header-info">no valor total de <span class="header-info__totals">R$ {{formatPrice(total)}}</span></span>
     </div>
     <table class="table order-table">
       <thead>
@@ -18,7 +18,7 @@
           <td class="order-table__codigo">{{item.codigo}}</td>
           <td class="order-table__meio" v-bind:class="['order-table__meio--' + item.meio]">{{item.meio}}</td>
           <td class="order-table__valor">{{formatPrice(item.valor)}}</td>
-          <td class="order-table__atualizado" v-bind:class="['order-table__atualizado--' + item.atualizado]">{{item.atualizado | formatDate}}</td>
+          <td class="order-table__atualizado">{{item.atualizado | formatDate}}</td>
           <td class="order-table__cliente"><span></span>{{item.cliente}}</br>{{item.email}}</td>
         </tr>
       </tbody>
