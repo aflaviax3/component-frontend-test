@@ -14,9 +14,9 @@
       </thead>
       <tbody>
         <tr v-for="item in ordersFiltered">
-          <td class="order-table__status" v-bind:class="['order-table__status--' + item.status]">{{item.status}}</td>
+          <td class="order-table__status" v-bind:class="['order-table__status--' + item.status]"><span></span>{{item.status}}</td>
           <td class="order-table__codigo">{{item.codigo}}</td>
-          <td class="order-table__meio" v-bind:class="['order-table__meio--' + item.meio]">{{item.meio}}</td>
+          <td class="order-table__meio" v-bind:class="['order-table__meio--' + item.meio]"><span></span>{{item.meio}}</td>
           <td class="order-table__valor">{{formatPrice(item.valor)}}</td>
           <td class="order-table__atualizado">{{item.atualizado | formatDate}}</td>
           <td class="order-table__cliente"><span></span>{{item.cliente}}</br>{{item.email}}</td>

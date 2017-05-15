@@ -11,6 +11,7 @@ Vue.use(Vuex)
 Vue.config.productionTip = false
 
 import 'bootstrap/dist/css/bootstrap.css'
+// require('bootstrap')
 
 /* eslint-disable no-new */
 new Vue({

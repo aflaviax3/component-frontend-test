@@ -17,7 +17,7 @@ export default new Vuex.Store({
       }, {
         status: 'inativo',
         codigo: 'DEF123',
-        meio: 'cartão',
+        meio: 'credito',
         valor: 239.67,
         atualizado: '2016-10-15T04:34:46.928Z',
         cliente: 'Patrick Hodges',
@@ -33,7 +33,7 @@ export default new Vuex.Store({
       }, {
         status: 'ativo',
         codigo: 'JKL123',
-        meio: 'cartão',
+        meio: 'debito',
         valor: 230.00,
         atualizado: '2016-11-18T04:34:46.928Z',
         cliente: 'Inez Knight',

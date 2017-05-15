@@ -1,6 +1,10 @@
 $blue-dark: #1c448c;
 $blue-bright:#24c6dc;
 $purple: #9013fe;
+$red: #ee2754;
+$gray: #bebebe;
+
+$imagepath: '../_assets';
 
 body.t-home {
   background: $blue-bright;
@@ -13,6 +17,7 @@ body.t-home {
     margin: 30px 0 30px 0;
     padding-bottom: 10px;
     border-bottom: 1px solid white;
+    text-align: center;
 
     &-info {
       font-weight: bold;
@@ -94,7 +99,74 @@ body.t-home {
       > td {
         border-top: 0;
         vertical-align: middle;
-        
+
+        &.order-table{
+
+          &__status {
+            font-size: 0;
+            text-align: center;
+
+            span {
+              display: inline-block;
+              width: 20px;
+              height: 20px;
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+
+            &--ativo span {
+              background-image: url('#{$imagepath}/label-check.png');
+            }
+
+            &--inativo span {
+              background-image: url('#{$imagepath}/label-error.png');
+            }
+          }
+
+          &__meio {
+            font-size: 0;
+            text-align: center;
+
+            span {
+              display: inline-block;
+              width: 30px;
+              height: 20px;
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+
+            &--boleto span {
+              background-image: url('#{$imagepath}/bar-codel.png');
+            }
+
+            &--debito span {
+              background-image: url('#{$imagepath}/debit-card.png');
+            }
+
+            &--credito span {
+              background-image: url('#{$imagepath}/credit-card.png');
+            }
+
+          }
+
+          &__atualizado {
+            position: relative;
+
+            &:after {
+                content: '';
+                width: 26px;
+                display: inline-block;
+                height: 40px;
+                border-right: 1px dashed #bebebe;
+                vertical-align: middle;
+                position: absolute;
+                right: 0;
+                top: 10px;
+            }
+          }
+
+        }
+
         &:first-child {
            border-radius: 25px 0 0 25px;
         }
@@ -106,3 +178,43 @@ body.t-home {
     }
   }
 }
+
+
+// @media screen and (max-width: 420px) {
+//     .order-table {
+//       &__status {
+//           width: 10%;
+//       }
+//
+//       &__codigo {
+//           width: 90%;
+//       }
+//
+//       &__meio {
+//           width: 10%;
+//       }
+//
+//       &__valor {
+//           width: 30%;
+//       }
+//
+//       &__atualizado {
+//           width: 60%;
+//       }
+//
+//       &__cliente {
+//           width: 100%;
+//           border-top: 1px dashed $gray;
+//       }
+//
+//       thead {
+//           display: none;
+//       }
+//
+//       td {
+//           display: block;
+//           float: left;
+//       }
+//
+//     }
+// }
