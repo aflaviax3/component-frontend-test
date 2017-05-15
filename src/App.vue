@@ -1,5 +1,5 @@
 <template>
-  <div v-show="view == 'tabela'">
+  <div v-show="view == 'pedidos'">
     <order-list></order-list>
   </div>
 </template>
@@ -27,6 +27,5 @@ export default {
 </script>
 
 <style lang="sass">
-  /* write sass here */
   @import './styles/main.scss'
 </style>

@@ -8,18 +8,18 @@
       <thead>
         <tr>
           <th v-for="column in columns">
-            <a href="#" @click.prevent="sortBy(column)">{{column | ucwords}}</a>
+            <a href="#" @click.prevent="sortBy(column)">{{column}}</a>
           </th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="item in ordersFiltered">
-          <td class="order-table__status" v-bind:class="['order-table__status--' + item.status]"><span></span>{{item.status}}</td>
-          <td class="order-table__codigo">{{item.codigo}}</td>
-          <td class="order-table__meio" v-bind:class="['order-table__meio--' + item.meio]"><span></span>{{item.meio}}</td>
-          <td class="order-table__valor">{{formatPrice(item.valor)}}</td>
-          <td class="order-table__atualizado">{{item.atualizado | formatDate}}</td>
-          <td class="order-table__cliente"><span></span>{{item.cliente}}</br>{{item.email}}</td>
+          <td class="order-table__status" v-bind:class="['order-table__status--' + toLower(item.status)]"><span></span>{{item.status}}</td>
+          <td class="order-table__codigo">{{item.externalId}}</td>
+          <td class="order-table__meio" v-bind:class="['order-table__meio--' + toLower(item.payments[0].fundingInstrument.method)]"><span></span>{{item.payments[0].fundingInstrument.method}}</td>
+          <td class="order-table__valor">{{formatPrice(item.amount.total)}}</td>
+          <td class="order-table__atualizado">{{item.updatedAt | formatDate}}</td>
+          <td class="order-table__cliente"><b>{{item.customer.fullname}}</b></br>{{item.customer.email}}</td>
         </tr>
       </tbody>
     </table>
@@ -35,11 +35,11 @@
     data(){
         return {
             ordem: {
-                keys: ['status', 'codigo', 'meio', 'R$', 'atualizado', 'cliente'],
-                sort: ['desc', 'desc', 'desc', 'desc', 'desc', 'desc']
+                keys: ['customer.fullname'],
+                sort: ['desc']
             },
             filter: '',
-            columns: ['status', 'codigo', 'meio', 'R$', 'atualizado', 'cliente']
+            columns: ['status', 'externalId', 'payments[0].fundingInstrument.method', 'amount.total', 'updatedAt', 'customer.fullname']
         };
     },
     methods: {
@@ -50,6 +50,9 @@
         formatPrice(value) {
             var val = (value/1).toFixed(2).replace('.', ',')
             return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+        },
+        toLower(value) {
+          return value.toLowerCase();
         }
     },
     computed: {
@@ -63,11 +66,8 @@
          return _.size(store.state.orders);
       },
       total() {
-        return _.sumBy(store.state.orders, 'valor');
+        return _.sumBy(store.state.orders, 'amount.total');
       }
     }
   }
 </script>
-
-<style lang="css">
-</style>

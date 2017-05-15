@@ -3,8 +3,10 @@ $blue-bright:#24c6dc;
 $purple: #9013fe;
 $red: #ee2754;
 $gray: #bebebe;
-
 $imagepath: '../_assets';
+
+@import "bootstrap";
+
 
 body.t-home {
   background: $blue-bright;
@@ -50,32 +52,9 @@ body.t-home {
       > th {
         border-bottom: 0;
 
-        &:first-child {
-          width: 5%;
-        }
-
-        &:nth-child(2) {
-          width: 25%;
-        }
-
-        &:nth-child(3) {
-          width: 5%;
-        }
-
-        &:nth-child(4) {
-          width: 15%;
-        }
-
-        &:nth-child(5) {
-          width: 15%;
-        }
-
-        &:last-child {
-          width: 30%;
-        }
-
         a {
           color: white;
+          font-size: 0;
 
           &:hover {
             color: $blue-dark;
@@ -85,6 +64,58 @@ body.t-home {
           &:visited {
             color: white;
             text-decoration: none;
+          }
+
+          &:after {
+            font-size:16px;
+          }
+        }
+
+        &:first-child {
+          width: 5%;
+
+          a:after {
+            content: 'Status';
+          }
+        }
+
+        &:nth-child(2) {
+          width: 25%;
+
+          a:after {
+            content: 'Codigo';
+          }
+        }
+
+        &:nth-child(3) {
+          width: 5%;
+
+          a:after {
+            content: 'Meio';
+          }
+        }
+
+        &:nth-child(4) {
+          width: 15%;
+
+          a:after {
+            content: 'R$';
+          }
+        }
+
+        &:nth-child(5) {
+          width: 15%;
+
+          a:after {
+            content: 'Atualizado';
+          }
+        }
+
+        &:last-child {
+          width: 30%;
+
+          a:after {
+            content: 'Cliente';
           }
         }
       }
@@ -109,16 +140,16 @@ body.t-home {
             span {
               display: inline-block;
               width: 20px;
-              height: 20px;
+              height: 19px;
               background-size: contain;
               background-repeat: no-repeat;
             }
 
-            &--ativo span {
+            &--paid span {
               background-image: url('#{$imagepath}/label-check.png');
             }
 
-            &--inativo span {
+            &--cancelled span {
               background-image: url('#{$imagepath}/label-error.png');
             }
           }
@@ -139,11 +170,11 @@ body.t-home {
               background-image: url('#{$imagepath}/bar-codel.png');
             }
 
-            &--debito span {
+            &--debit_card span {
               background-image: url('#{$imagepath}/debit-card.png');
             }
 
-            &--credito span {
+            &--credit_card span {
               background-image: url('#{$imagepath}/credit-card.png');
             }
 
@@ -180,41 +211,64 @@ body.t-home {
 }
 
 
-// @media screen and (max-width: 420px) {
-//     .order-table {
-//       &__status {
-//           width: 10%;
-//       }
-//
-//       &__codigo {
-//           width: 90%;
-//       }
-//
-//       &__meio {
-//           width: 10%;
-//       }
-//
-//       &__valor {
-//           width: 30%;
-//       }
-//
-//       &__atualizado {
-//           width: 60%;
-//       }
-//
-//       &__cliente {
-//           width: 100%;
-//           border-top: 1px dashed $gray;
-//       }
-//
-//       thead {
-//           display: none;
-//       }
-//
-//       td {
-//           display: block;
-//           float: left;
-//       }
-//
-//     }
-// }
+@media (max-width: 420px) {
+
+    .header {
+      &-info {
+        display: block;
+
+        &:first-child {
+          border-right: 0;
+        }
+      }
+    }
+
+    .table.order-table {
+
+      thead {
+          display: none;
+      }
+
+      tbody {
+
+        > tr > td {
+          display: block;
+          float: left;
+        }
+
+        > tr > td.order-table {
+
+          &__status {
+            width: 10%;
+          }
+
+          &__codigo {
+            width: 90%;
+          }
+
+          &__meio {
+            width: 10%;
+          }
+
+          &__valor {
+            width: 30%;
+          }
+
+          &__atualizado {
+            width: 60%;
+
+            &:after {
+              display: none;
+            }
+          }
+
+          &__cliente {
+            width: 100%;
+            border-top: 1px dashed $gray;
+            border-radius: 0;
+          }
+        }
+      }
+
+    }
+}
